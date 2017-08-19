@@ -1,0 +1,12 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.tanner.study.ui.a_view.fragment.Practice01Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.tanner.study.ui.a_view.widget.Practice09DrawPathView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+
+</FrameLayout>
