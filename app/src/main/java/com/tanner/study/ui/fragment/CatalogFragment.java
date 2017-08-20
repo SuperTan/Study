@@ -12,6 +12,7 @@ import android.widget.ListView;
 import com.tanner.study.R;
 import com.tanner.study.adapter.CatalogAdapter;
 import com.tanner.study.model.Catalog;
+import com.tanner.study.ui.WebViewActivity;
 import com.tanner.study.ui.a_view.CustomViewActivity;
 
 import java.util.ArrayList;
@@ -47,13 +48,22 @@ public class CatalogFragment extends Fragment {
                 startActivity(new Intent(getActivity(), CustomViewActivity.class));
             }
         });
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                intent.putExtra(WebViewActivity.URL_KEY, mData.get((int) l).getUrl());
+                startActivity(intent);
+                return true;
+            }
+        });
         return view;
     }
 
     private void initData() {
         mData = new ArrayList<>();
-        mData.add(new Catalog("自定义view1","http://hencoder.com/ui-1-1/"));
-        mData.add(new Catalog("自定义view2","http://hencoder.com/ui-1-2/"));
+        mData.add(new Catalog("自定义view1", "http://hencoder.com/ui-1-1/"));
+        mData.add(new Catalog("自定义view2", "http://hencoder.com/ui-1-2/"));
         mAdapter = new CatalogAdapter(getActivity(), mData);
         mListView.setAdapter(mAdapter);
     }

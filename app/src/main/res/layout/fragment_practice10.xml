@@ -7,6 +7,6 @@
     <!-- TODO: Update blank fragment layout -->
     <com.tanner.study.ui.a_view.widget.Practice10HistogramView
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

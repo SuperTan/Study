@@ -32,9 +32,18 @@ public class Practice10HistogramView extends View {
         //综合练习
         //练习内容：使用各种 Canvas.drawXXX() 方法画直方图
         Paint paint = new Paint();
-        paint.setStrokeWidth(10);
         paint.setColor(Color.GRAY);
+        canvas.drawLine(50,1000,1000,1000,paint);
+        canvas.drawLine(100,100,100,1100,paint);
 
-        canvas.drawLine(100,100,500,300,paint);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(Color.BLUE);
+        canvas.drawRect(200,400,300,1000,paint);
+
+        paint.setColor(Color.BLACK);
+        canvas.drawRect(400,300,500,1000,paint);
+
+        paint.setColor(Color.RED);
+        canvas.drawRect(600,100,700,1000,paint);
     }
 }
