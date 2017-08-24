@@ -8,10 +8,12 @@ package com.tanner.study.model;
 public class Catalog {
     String title;
     String url;
+    Class<?> activity;
 
-    public Catalog(String title, String url) {
+    public Catalog(String title, String url, Class<?> activity) {
         this.title = title;
         this.url = url;
+        this.activity = activity;
     }
 
     public String getTitle() {
@@ -28,5 +30,13 @@ public class Catalog {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Class<?> getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Class<?> activity) {
+        this.activity = activity;
     }
 }

@@ -32,6 +32,6 @@ public class CustomViewFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "自定义"+position;
+        return "自定义"+(1+position);
     }
 }

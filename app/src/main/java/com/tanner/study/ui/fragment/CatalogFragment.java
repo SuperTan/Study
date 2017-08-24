@@ -13,7 +13,8 @@ import com.tanner.study.R;
 import com.tanner.study.adapter.CatalogAdapter;
 import com.tanner.study.model.Catalog;
 import com.tanner.study.ui.WebViewActivity;
-import com.tanner.study.ui.a_view.CustomViewActivity;
+import com.tanner.study.ui.a_view.a_base.AviewAbaseActivity;
+import com.tanner.study.ui.a_view.b_paint.AviewBpaintActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
+/**
+ * 目录
+ */
 public class CatalogFragment extends Fragment {
     @BindView(R.id.id_catalog_list)
     ListView mListView;
@@ -45,7 +48,7 @@ public class CatalogFragment extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                startActivity(new Intent(getActivity(), CustomViewActivity.class));
+                startActivity(new Intent(getActivity(), mData.get((int) l).getActivity()));
             }
         });
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -62,8 +65,8 @@ public class CatalogFragment extends Fragment {
 
     private void initData() {
         mData = new ArrayList<>();
-        mData.add(new Catalog("自定义view1", "http://hencoder.com/ui-1-1/"));
-        mData.add(new Catalog("自定义view2", "http://hencoder.com/ui-1-2/"));
+        mData.add(new Catalog("自定义view1", "http://hencoder.com/ui-1-1/", AviewAbaseActivity.class));
+        mData.add(new Catalog("自定义view2", "http://hencoder.com/ui-1-2/",AviewBpaintActivity.class));
         mAdapter = new CatalogAdapter(getActivity(), mData);
         mListView.setAdapter(mAdapter);
     }
