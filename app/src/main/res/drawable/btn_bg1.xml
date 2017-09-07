@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--满足条件，就不会继续执行。顺序很重要-->
+    <item android:state_enabled="false" android:drawable="@drawable/btn_bg1_enable_false"/>
+    <item android:state_enabled="true" android:drawable="@drawable/btn_bg1_enable_true"/>
+    <item android:state_pressed="true" android:drawable="@drawable/btn_bg1_pressed"/>
+</selector>

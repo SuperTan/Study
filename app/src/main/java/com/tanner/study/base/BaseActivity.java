@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,18 +17,17 @@ import com.tanner.study.util.StateBarTranslucentUtils;
 import java.lang.ref.WeakReference;
 
 import butterknife.ButterKnife;
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
-import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+import cn.bmob.v3.Bmob;
 
 /**
  * Created by Tanner on 2016/5/19.
  */
-public abstract class BaseActivity extends SwipeBackActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     protected String TAG = this.getClass().getSimpleName();
     protected Context mContext;
     private int mRequestCode;
     //右滑返回
-    private SwipeBackLayout mSwipeBackLayout;
+//    private SwipeBackLayout mSwipeBackLayout;
 
 
     protected MyHandler mHandler = new MyHandler(this);
@@ -65,10 +65,11 @@ public abstract class BaseActivity extends SwipeBackActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(TAG, "onCreate: ");
+        Bmob.initialize(this, "bf4a8d25685142563728be6059caf0c0");
 
-        mSwipeBackLayout = getSwipeBackLayout();
-        // 设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
-        mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+//        mSwipeBackLayout = getSwipeBackLayout();
+//        // 设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
+//        mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
 
 
         mContext = getActivityContext();

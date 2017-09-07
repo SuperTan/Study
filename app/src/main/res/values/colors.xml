@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="bg_normal">#eaeaea</color>
+    <color name="bg_enable_false">#8c8c8c</color>
+    <color name="bg_enable_true">#1a1a1a</color>
+    <color name="bg_pressed">#8c8c8c</color>
+    <color name="white">#ffffff</color>
+    <color name="txt_black">#000000</color>
+    <color name="divider">#dbdbdb</color>
 </resources>

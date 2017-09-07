@@ -1,0 +1,16 @@
+kotlin  ：
+    不能同时使用 butterknife 和 kotterknife
+    不能使用 swipebacklayout
+
+网络请求：retrofit2
+响应式编程：rxjava rxandroid
+
+
+
+/**************************************小知识点************************************/
+fragment:
+    //在replace情况下，如果不添加ft.addToBackStack(null);这一句代码，那么fragment只在首次进入的时候会走生命周期，以后都不会走生命周期了
+    //而在show/hide情况下，就算添加了addToBackStack代码，fragment在第二次进入的时候，总是不会走生命周期方法。
+
+    so: replace  重走生命流程（条件：addToBackStack）
+        show/hide  不走生命流程
