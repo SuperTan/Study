@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -97,9 +98,10 @@ public class MainActivity extends AppCompatActivity {
     public void toMy() {
         if (mMyFragment == null) {
             mMyFragment = new MyFragment();
+            getSupportFragmentManager().beginTransaction().add(R.id.id_main_ll, mMyFragment).commit();
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.id_main_ll, mMyFragment).commit();
         showFragment(mMyFragment);
+
     }
 
 
@@ -107,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
     public void toHome() {
         if (mHomeFragment == null) {
             mHomeFragment = new HomeFragment();
+            getSupportFragmentManager().beginTransaction().add(R.id.id_main_ll, mHomeFragment).commit();
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.id_main_ll, mHomeFragment).commit();
         showFragment(mHomeFragment);
     }
 
@@ -116,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
     public void toCatalog() {
         if (mCatalogFragment == null) {
             mCatalogFragment = new CatalogFragment();
+            getSupportFragmentManager().beginTransaction().add(R.id.id_main_ll, mCatalogFragment).commit();
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.id_main_ll, mCatalogFragment).commit();
         showFragment(mCatalogFragment);
     }
 
@@ -126,8 +128,8 @@ public class MainActivity extends AppCompatActivity {
     public void toAbout() {
         if (mAboutFragment == null) {
             mAboutFragment = new AboutFragment();
+            getSupportFragmentManager().beginTransaction().add(R.id.id_main_ll, mAboutFragment).commit();
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.id_main_ll, mAboutFragment).commit();
         showFragment(mAboutFragment);
     }
 
@@ -135,8 +137,8 @@ public class MainActivity extends AppCompatActivity {
     public void toPlay() {
         if (mPlayFragment == null) {
             mPlayFragment = new PlayFragment();
+            getSupportFragmentManager().beginTransaction().add(R.id.id_main_ll, mPlayFragment).commit();
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.id_main_ll, mPlayFragment).commit();
         showFragment(mPlayFragment);
     }
 
@@ -146,21 +148,24 @@ public class MainActivity extends AppCompatActivity {
      * @param fragment
      */
     private void showFragment(Fragment fragment) {
-//        //先隐藏所有页面
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        if (mMyFragment != null) {
-//            transaction.hide(mMyFragment);
-//        }
-//        if (mHomeFragment != null) {
-//            transaction.hide(mHomeFragment);
-//        }
-//        if (mCatalogFragment != null) {
-//            transaction.hide(mCatalogFragment);
-//        }
-//        if (mAboutFragment != null) {
-//            transaction.hide(mAboutFragment);
-//        }
-//        transaction.show(fragment).commit();
+        //先隐藏所有页面
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (mMyFragment != null) {
+            transaction.hide(mMyFragment);
+        }
+        if (mHomeFragment != null) {
+            transaction.hide(mHomeFragment);
+        }
+        if (mCatalogFragment != null) {
+            transaction.hide(mCatalogFragment);
+        }
+        if (mAboutFragment != null) {
+            transaction.hide(mAboutFragment);
+        }
+        if (mPlayFragment != null) {
+            transaction.hide(mPlayFragment);
+        }
+        transaction.show(fragment).commit();
         //清除图片颜色
         mIconHome.setBackgroundColor(Color.parseColor("#ffffff"));
         mIconCatalog.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -176,6 +181,8 @@ public class MainActivity extends AppCompatActivity {
             title = "主页";
         } else if (fragment instanceof MyFragment) {
             title = "个人信息";
+        } else if (fragment instanceof PlayFragment) {
+            title = "计划";
         }
         mToolbar.setTitle(title);
 

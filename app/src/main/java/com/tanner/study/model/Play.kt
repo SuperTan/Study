@@ -1,6 +1,7 @@
 package com.tanner.study.model
 
 import cn.bmob.v3.BmobObject
+import cn.bmob.v3.datatype.BmobDate
 
 /**
  * Created by Tanner on 2017/9/7.
@@ -8,8 +9,8 @@ import cn.bmob.v3.BmobObject
 class Play: BmobObject(){
     var content: String? = null
     var desc: String? = null
-    var date: String? = null
-    var time: String? = null
+    var date: BmobDate? = null
+    var time: BmobDate? = null
     var remind: Boolean? = null
     var type: String? = null
     var complete: Boolean? = null
