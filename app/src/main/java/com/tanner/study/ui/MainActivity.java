@@ -26,6 +26,7 @@ import com.tanner.study.util.StateBarTranslucentUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.Bmob;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bmob.initialize(this, "bf4a8d25685142563728be6059caf0c0");
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         //设置状态栏透明

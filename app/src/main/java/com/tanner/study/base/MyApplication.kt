@@ -15,5 +15,7 @@ class MyApplication : Application() {
 
     companion object {
         var instance: MyApplication? = null
+        val s:String="sdf"
+        var r:String="sdf"
     }
 }

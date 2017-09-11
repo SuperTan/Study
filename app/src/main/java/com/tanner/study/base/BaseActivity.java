@@ -65,7 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(TAG, "onCreate: ");
-        Bmob.initialize(this, "bf4a8d25685142563728be6059caf0c0");
+
 
 //        mSwipeBackLayout = getSwipeBackLayout();
 //        // 设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM

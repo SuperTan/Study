@@ -52,12 +52,12 @@ class PlayAddActivity : BaseActivity() {
 
             play.save(this, object : SaveListener() {
                 override fun onSuccess() {
-                    MyUtil().showMsg("添加成功")
+                    MyUtil.showMsg("添加成功")
                     finish()
                 }
 
                 override fun onFailure(p0: Int, p1: String?) {
-                    MyUtil().showMsg("添加失败")
+                    MyUtil.showMsg("添加失败")
                 }
             })
         }
