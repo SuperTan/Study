@@ -4,12 +4,12 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.tanner.study.R;
 import com.tanner.study.adapter.CustomViewFragmentPagerAdapter;
 import com.tanner.study.base.BaseActivity;
+import com.tanner.study.base.BaseFragment;
 import com.tanner.study.ui.a_view.b_paint.fragment.Practice01Fragment;
 import com.tanner.study.ui.a_view.b_paint.fragment.Practice02Fragment;
 import com.tanner.study.ui.a_view.b_paint.fragment.Practice03Fragment;
@@ -39,7 +39,7 @@ public class AviewBpaintActivity extends BaseActivity {
     ViewPager mViewPager;
 
     CustomViewFragmentPagerAdapter mAdapter;
-    ArrayList<Fragment> mData;
+    ArrayList<BaseFragment> mData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

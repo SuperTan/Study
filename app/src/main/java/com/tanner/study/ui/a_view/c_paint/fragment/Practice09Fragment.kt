@@ -1,0 +1,26 @@
+package com.tanner.study.ui.a_view.c_paint.fragment
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.tanner.study.R
+import com.tanner.study.base.BaseFragment
+
+
+/**
+ * Created by Tanner on 2017/9/13.
+ */
+class Practice09Fragment : BaseFragment(){
+    override val title: String?
+        get() = "SetTextScaleXView"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater?.inflate(R.layout.aview_cpaint_practice09, container, false)
+
+    }
+}

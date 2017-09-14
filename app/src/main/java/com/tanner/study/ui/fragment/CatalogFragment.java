@@ -15,6 +15,7 @@ import com.tanner.study.model.Catalog;
 import com.tanner.study.ui.WebViewActivity;
 import com.tanner.study.ui.a_view.a_base.AviewAbaseActivity;
 import com.tanner.study.ui.a_view.b_paint.AviewBpaintActivity;
+import com.tanner.study.ui.a_view.c_paint.AviewCpaintActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,8 @@ public class CatalogFragment extends Fragment {
     private void initData() {
         mData = new ArrayList<>();
         mData.add(new Catalog("自定义view1", "http://hencoder.com/ui-1-1/", AviewAbaseActivity.class));
-        mData.add(new Catalog("自定义view2", "http://hencoder.com/ui-1-2/",AviewBpaintActivity.class));
+        mData.add(new Catalog("自定义view2", "http://hencoder.com/ui-1-2/", AviewBpaintActivity.class));
+        mData.add(new Catalog("自定义view3", "http://hencoder.com/ui-1-3/", AviewCpaintActivity.class));
         mAdapter = new CatalogAdapter(getActivity(), mData);
         mListView.setAdapter(mAdapter);
     }

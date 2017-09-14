@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.tanner.study.R
 import com.tanner.study.adapter.CustomViewFragmentPagerAdapter
+import com.tanner.study.base.BaseFragment
 import com.tanner.study.ui.PlayAddActivity
 import kotlinx.android.synthetic.main.fragment_play.*
 import kotlinx.android.synthetic.main.fragment_play.view.*
@@ -45,7 +46,7 @@ class PlayFragment : Fragment() {
 
     fun getData() {
         Log.e(TAG, "getData")
-        var date: ArrayList<Fragment> = ArrayList<Fragment>()
+        var date: ArrayList<BaseFragment> = ArrayList<BaseFragment>()
         date.add(PlayDayFragment())
 //        date.add(PlayDayFragment())
 

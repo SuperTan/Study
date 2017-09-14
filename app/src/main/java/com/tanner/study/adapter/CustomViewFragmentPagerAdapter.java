@@ -4,6 +4,9 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
+
+import com.tanner.study.base.BaseFragment;
 
 import java.util.ArrayList;
 
@@ -12,10 +15,11 @@ import java.util.ArrayList;
  */
 
 public class CustomViewFragmentPagerAdapter extends FragmentPagerAdapter {
+    private static final String TAG = "CustomViewFragmentPager";
     private Context context;
-    private ArrayList<Fragment> listFragments;
+    private ArrayList<BaseFragment> listFragments;
 
-    public CustomViewFragmentPagerAdapter(FragmentManager fm, ArrayList<Fragment> al) {
+    public CustomViewFragmentPagerAdapter(FragmentManager fm, ArrayList<BaseFragment> al) {
         super(fm);
         listFragments=al;
     }
@@ -32,6 +36,9 @@ public class CustomViewFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "自定义"+(1+position);
+        String title= listFragments.get(position).getTitle();
+        Log.e(TAG, "getPageTitle: "+title );
+        return title;
     }
+
 }

@@ -4,7 +4,7 @@
              android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
-    <com.tanner.study.ui.a_view.a_base.widget.Practice07DrawRoundRectView
+    <com.tanner.study.ui.a_view.b_paint.widget.Practice16TextPathView
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

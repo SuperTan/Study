@@ -1,16 +1,18 @@
 package com.tanner.study.ui.a_view.a_base.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.tanner.study.R;
+import com.tanner.study.base.BaseFragment;
+
+import org.jetbrains.annotations.Nullable;
 
 import butterknife.ButterKnife;
 
-public class Practice05Fragment extends Fragment {
+public class Practice05Fragment extends BaseFragment {
 
 
     @Override
@@ -26,4 +28,9 @@ public class Practice05Fragment extends Fragment {
         return view;
     }
 
+    @Nullable
+    @Override
+    public String getTitle() {
+        return "DrawOvalView";
+    }
 }

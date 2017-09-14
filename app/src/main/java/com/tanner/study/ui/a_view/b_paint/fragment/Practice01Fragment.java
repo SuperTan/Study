@@ -1,16 +1,18 @@
 package com.tanner.study.ui.a_view.b_paint.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.tanner.study.R;
+import com.tanner.study.base.BaseFragment;
+
+import org.jetbrains.annotations.NotNull;
 
 import butterknife.ButterKnife;
 
-public class Practice01Fragment extends Fragment {
+public class Practice01Fragment extends BaseFragment {
 
 
     @Override
@@ -24,6 +26,13 @@ public class Practice01Fragment extends Fragment {
         View view = inflater.inflate(R.layout.aview_bpaint_practice01, container, false);
         ButterKnife.bind(this, view);
         return view;
+    }
+
+
+    @NotNull
+    @Override
+    public String getTitle() {
+        return "LinearGradientView";
     }
 
 }

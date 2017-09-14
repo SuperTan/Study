@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v4.content.LocalBroadcastManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,13 +16,17 @@ import cn.bmob.v3.datatype.BmobDate
 import cn.bmob.v3.listener.FindListener
 import com.tanner.study.R
 import com.tanner.study.adapter.PlayAdapter
+import com.tanner.study.base.BaseFragment
 import com.tanner.study.model.Play
 import com.tanner.study.util.MyUtil
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class PlayDayFragment : Fragment() {
+class PlayDayFragment : BaseFragment() {
+    override val title: String?
+        get() = "每日计划"
+
     val TAG = "PlayDayFragment"
 
     companion object {
@@ -39,8 +42,6 @@ class PlayDayFragment : Fragment() {
 
         var mView: View? = null
     }
-
-
 
 
     var mlbm: LocalBroadcastManager? = null
@@ -192,8 +193,8 @@ class PlayDayFragment : Fragment() {
         } else {
             mView?.findViewById(R.id.id_play_day_overdue_ll)?.visibility = View.GONE
         }
-        var lvo:ListView=mView?.findViewById(R.id.id_play_day_overdue) as ListView
-        lvo.adapter=PlayAdapter(mContext, mDataO)
+        var lvo: ListView = mView?.findViewById(R.id.id_play_day_overdue) as ListView
+        lvo.adapter = PlayAdapter(mContext, mDataO)
         MyUtil.setListViewHeightBasedOnChildren(lvo)
 
         if (mDataT!!.size > 0) {
@@ -202,8 +203,8 @@ class PlayDayFragment : Fragment() {
             mView?.findViewById(R.id.id_play_day_today_ll)?.visibility = View.GONE
         }
 
-        var lvt:ListView=mView?.findViewById(R.id.id_play_day_today) as ListView
-        lvt.adapter=PlayAdapter(mContext, mDataT)
+        var lvt: ListView = mView?.findViewById(R.id.id_play_day_today) as ListView
+        lvt.adapter = PlayAdapter(mContext, mDataT)
         MyUtil.setListViewHeightBasedOnChildren(lvt)
 
         if (mDataN!!.size > 0) {
@@ -212,8 +213,8 @@ class PlayDayFragment : Fragment() {
             mView?.findViewById(R.id.id_play_day_next_ll)?.visibility = View.GONE
         }
 
-        var lvn:ListView=mView?.findViewById(R.id.id_play_day_next) as ListView
-        lvn.adapter=PlayAdapter(mContext, mDataN)
+        var lvn: ListView = mView?.findViewById(R.id.id_play_day_next) as ListView
+        lvn.adapter = PlayAdapter(mContext, mDataN)
         MyUtil.setListViewHeightBasedOnChildren(lvn)
     }
 
