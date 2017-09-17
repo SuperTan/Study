@@ -38,6 +38,7 @@
         <activity android:name=".ui.a_view.a_base.AviewAbaseActivity"/>
         <activity android:name=".ui.a_view.b_paint.AviewBpaintActivity"/>
         <activity android:name=".ui.a_view.c_paint.AviewCpaintActivity"/>
+        <activity android:name=".ui.a_view.d_canvas.AviewDcanvasActivity"/>
         <activity android:name=".ui.WebViewActivity">
         </activity>
         <activity android:name=".ui.PlayAddActivity"/>

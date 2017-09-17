@@ -48,10 +48,8 @@ class PlayFragment : Fragment() {
         Log.e(TAG, "getData")
         var date: ArrayList<BaseFragment> = ArrayList<BaseFragment>()
         date.add(PlayDayFragment())
-//        date.add(PlayDayFragment())
-
-//        mViewPager.setAdapter(mAdapter);
-//        mTabLayout.setupWithViewPager(mViewPager);
+        date.add(PlayShortFragment())
+        date.add(PlayLongFragment())
 
         mView?.id_play_viewpager?.adapter = CustomViewFragmentPagerAdapter(childFragmentManager, date)
         mView?.id_play_tabs?.setupWithViewPager(id_play_viewpager)

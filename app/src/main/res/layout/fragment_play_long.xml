@@ -18,7 +18,7 @@
             android:orientation="vertical">
             <!--已过期-->
             <LinearLayout
-                android:id="@+id/id_play_day_overdue_ll"
+                android:id="@+id/id_play_long_overdue_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -33,7 +33,7 @@
                     />
 
                 <ListView
-                    android:id="@+id/id_play_day_overdue"
+                    android:id="@+id/id_play_long_overdue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -41,7 +41,7 @@
 
             <!--今天-->
             <LinearLayout
-                android:id="@+id/id_play_day_today_ll"
+                android:id="@+id/id_play_long_today_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -55,7 +55,7 @@
                     />
 
                 <ListView
-                    android:id="@+id/id_play_day_today"
+                    android:id="@+id/id_play_long_today"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -63,7 +63,7 @@
 
             <!--接下来7天-->
             <LinearLayout
-                android:id="@+id/id_play_day_next_ll"
+                android:id="@+id/id_play_long_next_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -77,7 +77,7 @@
                     />
 
                 <ListView
-                    android:id="@+id/id_play_day_next"
+                    android:id="@+id/id_play_long_next"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.tanner.study.R;
 import com.tanner.study.model.Play;
+import com.tanner.study.util.ColorsUtil;
 import com.tanner.study.util.MyUtil;
 
 import java.text.ParseException;
@@ -26,10 +27,13 @@ import cn.bmob.v3.listener.UpdateListener;
 
 public class PlayAdapter extends CommonAdapter<Play> {
     private static final String TAG = "PlayAdapter";
+    String action;
 
     private LocalBroadcastManager mLocalBroadcastManager;
-    public PlayAdapter(Context context, List<Play> datas) {
+    public PlayAdapter(Context context, List<Play> datas,String action) {
+
         super(context, datas, R.layout.item_play);
+        this.action=action;
         mLocalBroadcastManager = LocalBroadcastManager.getInstance(mContext);
     }
 
@@ -38,6 +42,7 @@ public class PlayAdapter extends CommonAdapter<Play> {
         final int index = position;
         CheckBox content = viewHolder.getView(R.id.id_item_play_content);
         content.setText(item.getContent());
+        content.setTextColor(ColorsUtil.getColor());
         content.setChecked(false);
         content.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -47,7 +52,7 @@ public class PlayAdapter extends CommonAdapter<Play> {
                     item.update(mContext, item.getObjectId(), new UpdateListener() {
                         @Override
                         public void onSuccess() {
-                            Intent intent = new Intent("com.tanner.study.LOCAL_BROADCAST");
+                            Intent intent = new Intent(action);
                             intent.putExtra("g",item.getGroup() );
                             intent.putExtra("i",index );
                             mLocalBroadcastManager.sendBroadcast(intent);

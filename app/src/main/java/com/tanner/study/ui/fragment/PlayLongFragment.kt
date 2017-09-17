@@ -23,14 +23,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class PlayDayFragment : BaseFragment() {
+class PlayLongFragment : BaseFragment() {
     override val title: String?
-        get() = "每日计划"
+        get() = "长期计划"
 
-    val TAG = "PlayDayFragment"
+    val TAG = "PlayLongFragment"
 
     companion object {
-        val LOCAL_BROADCAST: String = "com.tanner.study.LOCAL_BROADCAST_DAY"
+        val LOCAL_BROADCAST: String = "com.tanner.study.LOCAL_BROADCAST_LONG"
         var mDataO: ArrayList<Play>? = ArrayList<Play>()
         var mDataT: ArrayList<Play>? = ArrayList<Play>()
         var mDataN: ArrayList<Play>? = ArrayList<Play>()
@@ -63,7 +63,7 @@ class PlayDayFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        mView = inflater!!.inflate(R.layout.fragment_play_day, container, false)
+        mView = inflater!!.inflate(R.layout.fragment_play_long, container, false)
 
         Log.e(TAG, "onCreateView")
         return mView
@@ -79,7 +79,7 @@ class PlayDayFragment : BaseFragment() {
         Log.e(TAG, "getDate")
         //查询数据 类型 day
 
-        var query1 = BmobQuery<Play>().addWhereEqualTo("type", "day")
+        var query1 = BmobQuery<Play>().addWhereEqualTo("type", "long")
         var query2 = BmobQuery<Play>().addWhereEqualTo("complete", false)
         var format = SimpleDateFormat("yyyy-MM-dd")
         var date = format.format(Date())
@@ -189,31 +189,31 @@ class PlayDayFragment : BaseFragment() {
         }
 
         if (mDataO!!.size > 0) {
-            mView?.findViewById(R.id.id_play_day_overdue_ll)?.visibility = View.VISIBLE
+            mView?.findViewById(R.id.id_play_long_overdue_ll)?.visibility = View.VISIBLE
         } else {
-            mView?.findViewById(R.id.id_play_day_overdue_ll)?.visibility = View.GONE
+            mView?.findViewById(R.id.id_play_long_overdue_ll)?.visibility = View.GONE
         }
-        var lvo: ListView = mView?.findViewById(R.id.id_play_day_overdue) as ListView
+        var lvo: ListView = mView?.findViewById(R.id.id_play_long_overdue) as ListView
         lvo.adapter = PlayAdapter(mContext, mDataO,LOCAL_BROADCAST)
         MyUtil.setListViewHeightBasedOnChildren(lvo)
 
         if (mDataT!!.size > 0) {
-            mView?.findViewById(R.id.id_play_day_today_ll)?.visibility = View.VISIBLE
+            mView?.findViewById(R.id.id_play_long_today_ll)?.visibility = View.VISIBLE
         } else {
-            mView?.findViewById(R.id.id_play_day_today_ll)?.visibility = View.GONE
+            mView?.findViewById(R.id.id_play_long_today_ll)?.visibility = View.GONE
         }
 
-        var lvt: ListView = mView?.findViewById(R.id.id_play_day_today) as ListView
+        var lvt: ListView = mView?.findViewById(R.id.id_play_long_today) as ListView
         lvt.adapter = PlayAdapter(mContext, mDataT,LOCAL_BROADCAST)
         MyUtil.setListViewHeightBasedOnChildren(lvt)
 
         if (mDataN!!.size > 0) {
-            mView?.findViewById(R.id.id_play_day_next_ll)?.visibility = View.VISIBLE
+            mView?.findViewById(R.id.id_play_long_next_ll)?.visibility = View.VISIBLE
         } else {
-            mView?.findViewById(R.id.id_play_day_next_ll)?.visibility = View.GONE
+            mView?.findViewById(R.id.id_play_long_next_ll)?.visibility = View.GONE
         }
 
-        var lvn: ListView = mView?.findViewById(R.id.id_play_day_next) as ListView
+        var lvn: ListView = mView?.findViewById(R.id.id_play_long_next) as ListView
         lvn.adapter = PlayAdapter(mContext, mDataN,LOCAL_BROADCAST)
         MyUtil.setListViewHeightBasedOnChildren(lvn)
     }
@@ -227,11 +227,11 @@ class PlayDayFragment : BaseFragment() {
             var s = p1.extras.getString("g")
             var index = p1.extras.getInt("i")
             when (s) {
-                "O" -> PlayDayFragment.mDataO!!.removeAt(index)
-                "T" -> PlayDayFragment.mDataT!!.removeAt(index)
-                "N" -> PlayDayFragment.mDataN!!.removeAt(index)
+                "O" -> PlayLongFragment.mDataO!!.removeAt(index)
+                "T" -> PlayLongFragment.mDataT!!.removeAt(index)
+                "N" -> PlayLongFragment.mDataN!!.removeAt(index)
             }
-            PlayDayFragment().setData()
+            PlayLongFragment().setData()
         }
 
     }
