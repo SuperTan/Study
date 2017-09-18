@@ -1,43 +1,47 @@
 package com.tanner.study.ui.a_view.d_canvas.widget
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import com.tanner.study.R
 
 /**
  * Created by Tanner on 2017/9/13.
  */
-class Practice08MatrixScaleView : View{
+class Practice08MatrixScaleView : View {
     var paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    var text: String? = "Hello Tanner"
+    var mat: Matrix = Matrix()
+    var bm: Bitmap
 
     constructor(context: Context?) : super(context)
 
-    constructor(context: Context?,attrs: AttributeSet):super(context,attrs)
+    constructor(context: Context?, attrs: AttributeSet) : super(context, attrs)
 
-    constructor(context: Context?,attrs: AttributeSet?, defStyleAttr: Int):super(context,attrs,defStyleAttr)
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
-    init{
-        paint.textSize=60f
+    init {
+        bm = BitmapFactory.decodeResource(resources, R.drawable.maps)
 
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        canvas?.drawText(text, 50f, 100f, paint)
-        // 使用 Paint.setTextSkewX() 来让文字倾斜
-        paint.textSkewX=1f
-        canvas?.drawText(text, 50f, 100f+paint.fontSpacing, paint)
-        paint.textSkewX=2f
-        canvas?.drawText(text, 50f, 100f+paint.fontSpacing*2, paint)
-        paint.textSkewX=3f
-        canvas?.drawText(text, 50f, 100f+paint.fontSpacing*3, paint)
-        paint.textSkewX=-0.5f
-        canvas?.drawText(text, 50f, 100f+paint.fontSpacing*4, paint)
-        paint.textSkewX=-1f
-        canvas?.drawText(text, 50f, 100f+paint.fontSpacing*5, paint)
+
+        canvas?.save()
+        mat.reset()
+        mat.postScale(0.5f, 0.5f,100f+bm.width/2f,100f+bm.height/2f)//sx sy 是横向和纵向的放缩倍数； px py 是放缩的轴心
+        canvas?.concat(mat)
+        canvas?.drawBitmap(bm, 100f, 100f, paint)
+        canvas?.restore()
+
+        canvas?.save()
+        mat.reset()
+        mat.postScale(1.2f, 1.2f,100f+bm.width/2f,100f+bm.height/2f+bm.height)
+        canvas?.concat(mat)
+        canvas?.drawBitmap(bm, 100f, 100f+bm.height, paint)
+        canvas?.restore()
+
 
     }
 

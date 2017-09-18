@@ -1,12 +1,13 @@
 package com.tanner.study.ui.a_view.d_canvas.widget
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-
+import android.view.animation.LinearInterpolator
+import com.tanner.study.R
 
 
 /**
@@ -14,10 +15,10 @@ import android.view.View
  */
 class Practice14FlipboardView : View{
     var paint1 = Paint(Paint.ANTI_ALIAS_FLAG)
-    var paint2 = Paint(Paint.ANTI_ALIAS_FLAG)
-    var texts = arrayOf("A", "a", "J", "j", "Â", "â")
-    var tops:Float=200f
-    var bottoms:Float=400f
+    var bm:Bitmap
+    var cam=Camera()
+    internal var d=1f
+    var anim=ObjectAnimator.ofFloat(this,"d",0f,180f)
 
     constructor(context: Context?) : super(context)
 
@@ -26,33 +27,67 @@ class Practice14FlipboardView : View{
     constructor(context: Context?,attrs: AttributeSet?, defStyleAttr: Int):super(context,attrs,defStyleAttr)
 
     init{
-        paint1.style=Paint.Style.STROKE
-        paint1.textSize=20f
-        paint1.color=Color.parseColor("#E91E63")
+        bm = BitmapFactory.decodeResource(resources, R.drawable.maps)
 
-        paint2.textSize=160f
+        anim.duration=2500
+        anim.interpolator=LinearInterpolator()
+        anim.repeatCount = ValueAnimator.INFINITE
+        anim.repeatMode = ValueAnimator.REVERSE
 
+
+
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        anim.start()
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        anim.end()
+    }
+
+    fun setD(d: Float) {
+        this.d = d
+        invalidate()
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        canvas?.drawRect(50f, tops, width - 50f, bottoms, paint1)
 
-        // 使用 Paint.getFontMetrics() 计算出文字的显示区域
-        // 然后计算出文字的绘制位置，从而让文字上下居中
-        // 这种居中算法的优点是，可以让不同的文字的 baseline 对齐
+        var centerX=width/2f
+        var centerY=height/2f
 
-        val middle = (tops + bottoms) / 2
-        val fontMetrics = paint2.fontMetrics
-        var y=(fontMetrics.ascent+fontMetrics.descent)/2
+        var x=centerX-bm.width/2f
+        var y=centerY-bm.height/2f
+
+        //第一遍绘制：上半部分
+        canvas?.save()
+        canvas?.clipRect(0f, 0f, width.toFloat(), centerY)
+        canvas?.drawBitmap(bm, x, y, paint1)
+        canvas?.restore()
 
 
-        canvas?.drawText(texts[0], 100f, middle-y, paint2)
-        canvas?.drawText(texts[1], 200f, middle-y, paint2)
-        canvas?.drawText(texts[2], 300f, middle-y, paint2)
-        canvas?.drawText(texts[3], 400f, middle-y, paint2)
-        canvas?.drawText(texts[4], 500f, middle-y, paint2)
-        canvas?.drawText(texts[5], 600f, middle-y, paint2)
+        //第二遍绘制：下半部分
+        canvas?.save()
+        if (d < 90f) {
+            canvas?.clipRect(0f, centerY, width.toFloat(), height.toFloat())
+        }else{
+            canvas?.clipRect(0f, 0f, width.toFloat(), centerY)
+        }
+        cam.save()
+        cam.rotateX(d)
+        canvas?.translate(centerX, centerY)
+        cam.applyToCanvas(canvas)
+        canvas?.translate(-centerX, -centerY)
+        cam.restore()
+
+        canvas?.drawBitmap(bm, x, y, paint1)
+        canvas?.restore()
+
+
+
 
     }
 

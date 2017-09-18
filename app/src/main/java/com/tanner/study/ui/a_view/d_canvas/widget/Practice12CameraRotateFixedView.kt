@@ -1,20 +1,20 @@
 package com.tanner.study.ui.a_view.d_canvas.widget
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import com.tanner.study.R
 
 /**
  * Created by Tanner on 2017/9/13.
  */
 class Practice12CameraRotateFixedView : View {
     var paint1 = Paint(Paint.ANTI_ALIAS_FLAG)
-    var paint2 = Paint(Paint.ANTI_ALIAS_FLAG)
-    var text1: String? = "Hello Tanner"
-    var text2: String? = "你多少岁了"
-    var text3: String? = "18"
+    var bm:Bitmap
+    var mat: Matrix = Matrix()
+    var cam: Camera = Camera()
+
 
     constructor(context: Context?) : super(context)
 
@@ -23,18 +23,43 @@ class Practice12CameraRotateFixedView : View {
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     init {
-        paint1.textSize = 60f
-        paint2.textSize = 120f
+        bm = BitmapFactory.decodeResource(resources, R.drawable.maps)
+
 
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        // 使用 Paint.measureText 测量出文字宽度，让文字可以相邻绘制
 
-        canvas?.drawText(text1, 50f, 200f, paint1);
-        canvas?.drawText(text2, 50f + paint1.measureText(text1), 200f, paint2);
-        canvas?.drawText(text3, 50f + paint1.measureText(text1) + paint2.measureText(text2), 200f, paint1)
+        var centerX1:Float=bm.width/2+100f
+        var centerY1:Float=bm.height/2+100f
+        var centerX2:Float=bm.width/2+100f
+        var centerY2:Float=bm.height/2+100f+bm.height
+
+        cam.save()
+        mat.reset()
+        cam.rotateX(30f)
+        cam.getMatrix(mat)
+        cam.restore()
+        mat.preTranslate(-centerX1, -centerY1)
+        mat.postTranslate(centerX1, centerY1)
+        canvas?.save()
+        canvas?.concat(mat)
+        canvas?.drawBitmap(bm, 100f, 100f, paint1)
+        canvas?.restore()
+
+        cam.save()
+        mat.reset()
+        cam.rotateX(30f)
+        cam.getMatrix(mat)
+        cam.restore()
+        mat.preTranslate(-centerX2, -centerY2)
+        mat.postTranslate(centerX2, centerY2)
+        canvas?.save()
+        canvas?.concat(mat)
+        canvas?.drawBitmap(bm, 100f, 100f+bm.height, paint1)
+        canvas?.restore()
+
 
     }
 

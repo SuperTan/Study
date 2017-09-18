@@ -1,17 +1,18 @@
 package com.tanner.study.ui.a_view.d_canvas.widget
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import com.tanner.study.R
 
 /**
  * Created by Tanner on 2017/9/13.
  */
 class Practice07MatrixTranslateView : View{
     var paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    var text: String? = "Hello Tanner"
+    var bm:Bitmap
+    var mat:Matrix= Matrix()
 
     constructor(context: Context?) : super(context)
 
@@ -20,17 +21,28 @@ class Practice07MatrixTranslateView : View{
     constructor(context: Context?,attrs: AttributeSet?, defStyleAttr: Int):super(context,attrs,defStyleAttr)
 
     init{
-        paint.textSize=60f
+        bm = BitmapFactory.decodeResource(resources, R.drawable.maps)
+
 
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        canvas?.drawText(text, 50f, 100f, paint)
-        // 使用 Paint.setUnderlineText() 来设置下划线
-        paint.isUnderlineText=true
-        canvas?.drawText(text, 50f, 100f+paint.fontSpacing, paint)
+        canvas?.save()
+        mat.reset()
+        mat.postTranslate(100f, 100f)
+        canvas?.concat(mat)//Canvas.setMatrix() 改为 Canvas.concat()，避免有些机型中出现的显示问题。
+        canvas?.drawBitmap(bm, 100f, 100f, paint)
+        canvas?.restore()
+
+        canvas?.save()
+        mat.reset()
+        mat.postTranslate(-100f, 200f)
+        canvas?.concat(mat)//Canvas.setMatrix() 改为 Canvas.concat()，避免有些机型中出现的显示问题。
+        canvas?.drawBitmap(bm, 100f, 100f+bm.height, paint)
+        canvas?.restore()
+
 
     }
 
