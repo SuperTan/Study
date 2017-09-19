@@ -24,4 +24,5 @@
     <string name="play_date">计划日期</string>
     <string name="play_add">添加</string>
     <string name="if_remind">&#xe613;</string>
+    <string name="test">// 把下面的绘制代码移到 super.onDraw() 的上面，就可以让原主体内容盖住你的绘制代码了         // （或者你也可以把 super.onDraw() 移到这段代码的下面）         Layout layout = getLayout();         bounds.left = layout.getLineLeft(1);         bounds.right = layout.getLineRight(1);         bounds.top = layout.getLineTop(1);         bounds.bottom = layout.getLineBottom(1);         canvas.drawRect(bounds, paint);         bounds.left = layout.getLineLeft(layout.getLineCount() - 3);         bounds.right = layout.getLineRight(layout.getLineCount() - 3);         bounds.top = layout.getLineTop(layout.getLineCount() - 3);         bounds.bottom = layout.getLineBottom(layout.getLineCount() - 3);         canvas.drawRect(bounds, paint);</string>
 </resources>

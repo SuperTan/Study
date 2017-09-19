@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.tanner.study.ui.fragment.HomeFragment;
 import com.tanner.study.ui.fragment.MyFragment;
 import com.tanner.study.ui.fragment.PlayFragment;
 import com.tanner.study.util.ColorsUtil;
+import com.tanner.study.util.MyUtil;
 import com.tanner.study.util.StateBarTranslucentUtils;
 
 import butterknife.BindView;
@@ -191,4 +193,22 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.closeDrawer(Gravity.LEFT);
     }
 
+
+    long currentTime=0L;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(KeyEvent.ACTION_DOWN==event.getAction()){
+            if(keyCode==KeyEvent.KEYCODE_BACK){
+                if (System.currentTimeMillis() - currentTime > 2000) {
+                    currentTime=System.currentTimeMillis();
+                    MyUtil.INSTANCE.showMsg("再按一次退出程序");
+                    return false;
+                } else {
+                    System.exit(0);
+                    return true;
+                }
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
