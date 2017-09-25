@@ -22,11 +22,20 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/java'
+        main {
+            res.srcDirs = [
+                    'src/main/res/layout/a_view',
+                    'src/main/res/layout',
+                    'src/main/res'
+            ]
+        }
+
     }
 
 }
 
 dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

@@ -14,3 +14,19 @@ fragment:
 
     so: replace  重走生命流程（条件：addToBackStack）
         show/hide  不走生命流程
+
+
+kotlin :
+    属性动画不能写成这样
+    var progress: Int=10
+        set(value) {
+            progress = value
+            invalidate()
+        }
+
+     要写成这样
+    internal var progress: Int=10
+     fun setProgress(value:Int){
+        progress=value
+        invalidate()
+     }

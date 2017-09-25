@@ -1,4 +1,4 @@
-package com.tanner.study.ui.a_view.e_order
+package com.tanner.study.ui.a_view.f_anim
 
 import android.content.Context
 import android.graphics.Color
@@ -7,26 +7,25 @@ import com.tanner.study.R
 import com.tanner.study.adapter.CustomViewFragmentPagerAdapter
 import com.tanner.study.base.BaseActivity
 import com.tanner.study.base.BaseFragment
-import com.tanner.study.ui.a_view.e_order.fragment.*
-import kotlinx.android.synthetic.main.a_view_eorder.*
+import com.tanner.study.ui.a_view.f_anim.fragment.*
+import kotlinx.android.synthetic.main.a_view_fanim.*
 import java.util.*
 
-/**
- * Created by Tanner on 2017/9/19.
- */
-class AviewEorderActivity:BaseActivity(){
+class AviewFanimActivity : BaseActivity() {
     internal var mData: ArrayList<BaseFragment> = ArrayList<BaseFragment>()
 
     override fun getActivityContext(): Context {
-        return this
+        return  this
     }
 
     override fun loadViewLayout() {
-        setContentView(R.layout.a_view_eorder)
+        setContentView(R.layout.a_view_fanim)
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initStateBar(Color.BLUE)
         initStateBar(Color.BLUE)
         mData.add(Practice01Fragment())
         mData.add(Practice02Fragment())
@@ -40,6 +39,4 @@ class AviewEorderActivity:BaseActivity(){
         id_custom_view_viewpager.adapter=mAdapter
         id_custom_view_tabs.setupWithViewPager(id_custom_view_viewpager)
     }
-
-
 }

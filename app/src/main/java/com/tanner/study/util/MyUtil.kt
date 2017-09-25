@@ -1,5 +1,6 @@
 package com.tanner.study.util
 
+import android.content.res.Resources
 import android.widget.ListView
 import android.widget.Toast
 import com.tanner.study.base.MyApplication
@@ -10,10 +11,10 @@ import com.tanner.study.base.MyApplication
  */
 object MyUtil {
 
-        fun showMsg(msg: String) {
-            Toast.makeText(MyApplication.instance, msg, Toast.LENGTH_SHORT).show()
-            MyApplication.s
-        }
+    fun showMsg(msg: String) {
+        Toast.makeText(MyApplication.instance, msg, Toast.LENGTH_SHORT).show()
+        MyApplication.s
+    }
 
     fun setListViewHeightBasedOnChildren(listView: ListView) {
 
@@ -43,5 +44,10 @@ object MyUtil {
 
         listView.setLayoutParams(params)
 
+    }
+
+    fun dpToPixel(dp:Float):Float{
+        val metrics = Resources.getSystem().displayMetrics
+        return dp*metrics.density
     }
 }
